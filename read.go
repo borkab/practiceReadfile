@@ -65,4 +65,11 @@ func main() {
 	check(err)
 	fmt.Printf("4 bytes: %s\n", string(b4))
 
+	////read file into a string
+	content, err := os.ReadFile("bee.txt")
+	check(err)
+	fmt.Println(string(content))
+
+	//read file line by line
+
 }
