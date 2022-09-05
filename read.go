@@ -16,12 +16,12 @@ func check(e error) {
 func main() {
 	file, err := os.Create("bee.txt")
 	check(err)
-	defer file.Close()
+
 	fmt.Println("bee.txt was successfully created")
 
-	_, err = file.WriteString("Here is the beehive but where are all the bees? Hiding away where nobody sees. Here they come flying out of their hive: one, two, three, four, five :)")
+	_, err = file.WriteString("Here is the beehive but where are all the bees?\nHiding away where nobody sees.\nHere they come flying out of their hive:\none, two, three, four, five\n:)")
 	check(err)
-	fmt.Println("You have successfully written to yor bee.txt")
+	fmt.Println("You have successfully written to your bee.txt")
 
 	//we slurp the entire contents of the file into the memory
 	dat, err := os.ReadFile("bee.txt")
@@ -31,6 +31,7 @@ func main() {
 	//we open our file
 	file, err = os.Open("bee.txt")
 	check(err)
+	defer file.Close()
 
 	//read some bytes from the beginning of the file
 	b1 := make([]byte, 47)
@@ -69,7 +70,5 @@ func main() {
 	content, err := os.ReadFile("bee.txt")
 	check(err)
 	fmt.Println(string(content))
-
-	//read file line by line
 
 }
